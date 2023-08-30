@@ -1,5 +1,41 @@
 package org.devops
 
+
+"""
+# 查找项目 返回一个列表
+curl -XGET --header "Authorization: Bearer xxxx" "https://xxxx/api/v4/projects?search=project_name"
+
+
+
+# 查找项目下面的webhook
+curl -XGET --header "Authorization: Bearer xxxx" "https://xxxx/api/v4/projects/project_id/hooks"
+
+
+# 给项目创建webhook
+curl -XPOST -H "Content-Type: application/json"  --header "Authorization: Bearer xxxx" "https://xxxxx/api/v4/projects/project_id/hooks" -d  '{
+       "id": "project_id",
+       "url": "jenkins job url",
+       "token": "",
+       "push_events": true
+}'
+
+
+# 分支review对比
+curl -XGET --header "Authorization: Bearer xxx" "https://xxxxx/api/v4/projects/project_id/repository/compare?from=master&to=dev"
+
+
+# 查询分支详情
+curl -XGET --header "Authorization: Bearer xxx" "https://xxxxx/api/v4/projects/project_id/repository/branches/1.0.0"
+
+
+# 获取项目收保护分支的
+curl -XGET --header "Authorization: Bearer xxxx" "https://xxxxx/api/v4/projects/project_id/protected_branches"
+
+# 查询收保护分支的详情
+curl -XGET --header "Authorization: Bearer xxx" "https://xxxxx/api/v4/projects/project_id/protected_branches/1.0.x"
+"""
+
+
 //封装HTTP请求
 def HttpReq(reqType,reqUrl,reqBody){
     def gitServer = "http://192.168.1.200:30088/api/v4"
